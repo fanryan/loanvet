@@ -11,6 +11,14 @@ def load_data():
 def drop_first_col(df):
     return df.iloc[:, 1:]
 
+# Drop duplicates (610)
+def drop_duplicates(df, subset=None):
+    before = len(df)
+    df = df.drop_duplicates(subset=subset)
+    after = len(df)
+    print(f"Dropped {before - after} duplicate rows")
+    return df
+
 # == Deal with missing values ==
 
 # Add missing flags for MonthlyIncome and NumberOfDependents
@@ -57,10 +65,10 @@ def save_cleaned_data(df):
     conn.close()
     print("Cleaned data saved to 'credit_risk_cleaned' table.")
 
-
 if __name__ == "__main__":
     df = load_data()
     df = drop_first_col(df)
+    df = drop_duplicates(df)
     df = create_missing_flags(df)
     df = impute_missing_values(df)
     df = cap_outliers(df, custom_caps)
