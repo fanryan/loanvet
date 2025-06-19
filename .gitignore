@@ -4,5 +4,6 @@ __pycache__/
 *.pyc
 .DS_Store
 .ipynb_checkpoints/
-data/
+data/loanvet.db
+data/raw
 models/
