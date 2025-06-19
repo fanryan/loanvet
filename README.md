@@ -5,10 +5,10 @@ LoanVet is a machine learning system for credit risk classification built with P
 ## Project Structure
 
 - data/ - Raw and processed datasets
-- notebooks/ - Jupyter notebooks for exploratory data analysis and modeling
-- src/ - Source code (optional)
+- notebooks/ - Jupyter notebooks for exploratory data analysis and modelling
+- src/ - Source code
 - models/ - Saved ML models
-- reports/ - Visualizations and reports
+- reports/ - Visualisations and reports
 
 ## Setup
 
@@ -17,7 +17,7 @@ LoanVet is a machine learning system for credit risk classification built with P
 ```bash
 pip install -r requirements.txt
 ```
-3. Run notebooks for exploration and modeling
+3. Run notebooks for exploration and modelling
 
 ## Usage
 
