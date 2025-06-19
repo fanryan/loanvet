@@ -9,6 +9,12 @@ def load_data():
     conn.close()
     return df
 
+def load_cleaned_data():
+    conn = sqlite3.connect("data/loanvet.db")
+    df = pd.read_sql_query("SELECT * FROM credit_risk_cleaned", conn)
+    conn.close()
+    return df
+
 def eda_overview(df):
     print("Shape:", df.shape)
     print("\nColumns:\n", df.columns)
