@@ -1,11 +1,5 @@
-import pandas as pd
 import sqlite3
-
-def load_data():
-    conn = sqlite3.connect("data/loanvet.db")
-    df = pd.read_sql_query("SELECT * FROM credit_risk_raw", conn)
-    conn.close()
-    return df
+from eda_baseline import load_data
 
 # Drop unnamed index column
 def drop_first_col(df):

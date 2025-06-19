@@ -52,6 +52,7 @@ This project uses the [Give Me Some Credit dataset](https://www.kaggle.com/compe
     ```bash
     python src/import_csv_to_sqlite.py
     python src/data_cleaning.py
+    python src/feature_engineering.py
     ```
 
 ## Usage

@@ -2,13 +2,7 @@ import math
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import sqlite3
-
-def load_cleaned_data():
-    conn = sqlite3.connect("data/loanvet.db")
-    df = pd.read_sql_query("SELECT * FROM credit_risk_cleaned", conn)
-    conn.close()
-    return df
+from eda_baseline import load_cleaned_data
 
 def plot_numeric_distributions(df):
     numeric_cols = [
