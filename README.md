@@ -56,10 +56,10 @@ This project uses the [Give Me Some Credit dataset](https://www.kaggle.com/compe
 
 ## Usage
 
-Once the cleaned dataset has been saved to data/loanvet.db, you can run the notebooks for EDA, model training, and evaluation:
-    ```bash
-    jupyter notebook
-    ```
+Once the cleaned dataset has been saved to `data/loanvet.db`, you can run the notebooks for EDA, model training, and evaluation:
+```bash
+jupyter notebook
+```
 
-Navigate to the notebooks/ folder and run the analysis step by step.
+Navigate to the `notebooks/` folder and run the analysis step by step.
 
