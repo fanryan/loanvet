@@ -10,7 +10,8 @@ def log_transform(df):
         'DebtRatio',
         'NumberOfTime30-59DaysPastDueNotWorse',
         'NumberOfTimes90DaysLate',
-        'NumberOfTime60-89DaysPastDueNotWorse'
+        'NumberOfTime60-89DaysPastDueNotWorse',
+        'TotalDelinquencies'
     ]
     for feat in skewed_features:
         df[f'{feat}_log'] = np.log1p(df[feat])
@@ -60,14 +61,21 @@ def encode_categorical_features(df, method='onehot'):
     
     return df
 
+def add_interaction_features(df):
+    df["Util_x_Late"] = df["RevolvingUtilizationOfUnsecuredLines_log"] * df["NumberOfTimes90DaysLate_log"]
+    df["IncomePerDependent"] = df["MonthlyIncome"] / (df["NumberOfDependents"] + 1)
+    df["CreditLines_x_Delinquencies"] = df["NumberOfOpenCreditLinesAndLoans"] * df["TotalDelinquencies"]
+    return df
+
 def preprocess_data(df):
-    df = log_transform(df)
     df = aggregate_delinquencies(df)
+    df = log_transform(df)
     df = bin_age(df)
     df = flag_high_utilization(df)
     df = income_per_credit_line(df)
     df = categorise_dependents(df)
     df = encode_categorical_features(df, method='onehot')
+    df = add_interaction_features(df)
     return df
 
 def save_engineered_data(df):
