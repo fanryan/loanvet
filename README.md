@@ -1,4 +1,3 @@
-cat << 'EOF' > README.md
 # LoanVet
 
 LoanVet is a machine learning system for credit risk classification built with Python and scikit-learn.
@@ -33,52 +32,52 @@ This project uses the [Give Me Some Credit dataset](https://www.kaggle.com/compe
 ## Setup
 
 1. Clone this repository and navigate into the project folder:
-   \`\`\`bash
+   ```bash
    git clone https://github.com/fanryan/LoanVet.git
    cd LoanVet
-   \`\`\`
+   ```
 
 2. Create and activate a Python virtual environment:
-   \`\`\`bash
+   ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
-   \`\`\`
+   ```
 
 3. Install dependencies:
-   \`\`\`bash
+   ```bash
    pip install -r requirements.txt
-   \`\`\`
+   ```
 
 4. Import and clean the raw dataset, then perform feature engineering:
-   \`\`\`bash
+   ```bash
    python src/import_csv_to_sqlite.py
    python src/data_cleaning.py
    python src/feature_engineering.py
-   \`\`\`
+   ```
 
 ## Features Documentation
 
-All engineered features and transformations are documented in the [\`features.md\`](features.md) file.  
+All engineered features and transformations are documented in the `features.md` file.  
 This file explains how raw variables are transformed, aggregated, binned, or combined into new features used for modelling.
 
 ## Usage
 
-Once the cleaned and engineered dataset has been saved to \`data/loanvet.db\`, you can run the notebooks for exploratory data analysis, model training, and evaluation:
+Once the cleaned and engineered dataset has been saved to `data/loanvet.db`, you can run the notebooks for exploratory data analysis, model training, and evaluation:
 
-\`\`\`bash
+```bash
 jupyter notebook
-\`\`\`
+```
 
-Navigate to the \`notebooks/\` folder and open the notebooks.  
-**Tip:** In VS Code, press \`Cmd + Shift + V\` (Mac) or \`Ctrl + Shift + V\` (Windows/Linux) to preview Markdown files like \`features.md\` directly.
+Navigate to the `notebooks/` folder and open the notebooks.  
+**Tip:** In VS Code, press `Cmd + Shift + V` (Mac) or `Ctrl + Shift + V` (Windows/Linux) to preview Markdown files like `features.md` directly.
 
 ## Additional Notes
 
 - The dataset is imbalanced; some models use class weighting to address this.
-- Feature engineering is central to improving model performance — review \`features.md\` regularly.
-- Keep dependencies up to date by updating \`requirements.txt\`.
-- You can extend or modify feature engineering by editing \`src/feature_engineering.py\`.
-- Models are saved in the \`models/\` directory after training for easy reuse.
+- Feature engineering is central to improving model performance — review `features.md` regularly.
+- Keep dependencies up to date by updating `requirements.txt`.
+- You can extend or modify feature engineering by editing `src/feature_engineering.py`.
+- Models are saved in the `models/` directory after training for easy reuse.
 
 ---
 
