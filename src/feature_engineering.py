@@ -62,30 +62,42 @@ def encode_categorical_features(df, method='onehot'):
     return df
 
 def add_interaction_features(df):
-    df["Util_x_Late"] = df["RevolvingUtilizationOfUnsecuredLines_log"] * df["NumberOfTimes90DaysLate_log"]
-    df["IncomePerDependent"] = df["MonthlyIncome"] / (df["NumberOfDependents"] + 1)
-    df["CreditLines_x_Delinquencies"] = df["NumberOfOpenCreditLinesAndLoans"] * df["TotalDelinquencies"]
+    df['Util_x_Late'] = df['RevolvingUtilizationOfUnsecuredLines_log'] * df['NumberOfTimes90DaysLate_log']
+    df['IncomePerDependent'] = df['MonthlyIncome'] / (df['NumberOfDependents'] + 1)
+    df['CreditLines_x_Delinquencies'] = df['NumberOfOpenCreditLinesAndLoans'] * df['TotalDelinquencies']
     return df
 
-def preprocess_data(df):
+# feature_engineering.py
+
+def minimal_preprocess(df):
+    # For baseline
+    df = aggregate_delinquencies(df)
+    df = log_transform(df)
+    df = encode_categorical_features(df)
+    return df
+
+def full_preprocess(df):
+    # For advanced models
     df = aggregate_delinquencies(df)
     df = log_transform(df)
     df = bin_age(df)
     df = flag_high_utilization(df)
     df = income_per_credit_line(df)
     df = categorise_dependents(df)
-    df = encode_categorical_features(df, method='onehot')
+    df = encode_categorical_features(df)
     df = add_interaction_features(df)
     return df
 
-def save_engineered_data(df):
+def save_engineered_data(df, full=True):
     conn = sqlite3.connect("data/loanvet.db")
-    df.to_sql("credit_risk_engineered", conn, if_exists='replace', index=False)
+    table_name = "credit_risk_engineered" if full else "credit_risk_baseline"
+    df.to_sql(table_name, conn, if_exists='replace', index=False)
     conn.close()
-    print("✅ Engineered data saved to 'credit_risk_engineered' table.")
-
+    print(f"✅ Saved data to '{table_name}' table.")
 
 if __name__ == "__main__":
     df = load_cleaned_data()
-    df = preprocess_data(df)
-    save_engineered_data(df)
+    df_full = full_preprocess(df)
+    save_engineered_data(df_full, full=True)
+    df_min = minimal_preprocess(df)
+    save_engineered_data(df_min, full=False)
