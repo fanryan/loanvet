@@ -10,6 +10,7 @@ NumberRealEstateLoansOrLines
 NumberOfTime60-89DaysPastDueNotWorse
 NumberOfDependents
 TotalDelinquencies
+TotalDelinquencies_log
 RevolvingUtilizationOfUnsecuredLines_log
 MonthlyIncome_log
 DebtRatio_log
