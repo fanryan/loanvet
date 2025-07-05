@@ -6,4 +6,6 @@ __pycache__/
 .ipynb_checkpoints/
 data/loanvet.db
 data/raw
-models/
+models/**/*.joblib
+models/**/*.pth
+models/advanced/*.pkl

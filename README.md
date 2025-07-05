@@ -6,8 +6,8 @@ LoanVet is a machine learning system for credit risk classification built with P
 
 - `data/` - Raw and processed datasets
 - `notebooks/` - Jupyter notebooks for exploratory data analysis and modelling
-- `src/` - Source code for data processing and model pipeline
-- `models/` - Saved machine learning models
+- `src/` - Source code for data import, cleaning, and feature engineering
+- `models/` - Saved pipelines, evaluation metrics, and feature importance artifacts
 - `reports/` - Visualisations and reports
 - `features.md` - Documentation of engineered features and transformations
 
@@ -70,6 +70,27 @@ jupyter notebook
 
 Navigate to the `notebooks/` folder and open the notebooks.  
 **Tip:** In VS Code, press `Cmd + Shift + V` (Mac) or `Ctrl + Shift + V` (Windows/Linux) to preview Markdown files like `features.md` directly.
+
+## Saved Models
+
+Trained models and outputs are saved in the `models/` directory:
+
+```
+models/
+├── baseline/
+│ ├── pipeline.pkl # Trained logistic regression pipeline
+│ ├── cv_metrics.json # ROC-AUC, PR-AUC, F1, confusion matrix (train/test & cross-val)
+│ ├── feature_importance.csv # Logistic regression coefficients
+│ └── features.json # Ordered list of feature names used during training
+├── advanced/
+│ ├── *.pkl # Trained ensemble model (e.g. XGBoost, LightGBM)
+│ ├── cv_metrics.json # Cross-validated metrics
+│ ├── *_feature_importance.csv # Tree-based feature importances
+│ └── features.json # Feature names used in model input
+```
+
+
+These artifacts support downstream reuse in dashboards (e.g. Streamlit) and inference scripts.
 
 ## Additional Notes
 
