@@ -1,6 +1,7 @@
 import math
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FixedLocator
 import seaborn as sns
 from eda_baseline import load_cleaned_data
 
@@ -40,6 +41,7 @@ def plot_eda(df):
         for i, col in enumerate(binary_cols):
             sns.countplot(x=df[col], ax=axes[i])
             axes[i].set_title(f'Countplot of {col}')
+            axes[i].xaxis.set_major_locator(FixedLocator([0, 1]))
             axes[i].set_xticklabels(['0', '1'])
 
         # Remove unused axes for binary plots

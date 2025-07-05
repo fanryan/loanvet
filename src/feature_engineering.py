@@ -67,8 +67,6 @@ def add_interaction_features(df):
     df['CreditLines_x_Delinquencies'] = df['NumberOfOpenCreditLinesAndLoans'] * df['TotalDelinquencies']
     return df
 
-# feature_engineering.py
-
 def minimal_preprocess(df):
     # For baseline
     df = aggregate_delinquencies(df)

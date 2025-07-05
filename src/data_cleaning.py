@@ -52,7 +52,12 @@ def cap_outliers(df, caps):
             df[col] = df[col].clip(lower=lower, upper=upper)
     return df
 
-#Save to a new SQLite table
+def save_imputed_data(df):
+    conn = sqlite3.connect("data/loanvet.db")
+    df.to_sql("credit_risk_imputed", conn, if_exists='replace', index=False)
+    conn.close()
+    print("Imputed data saved to 'credit_risk_imputed' table.")
+
 def save_cleaned_data(df):
     conn = sqlite3.connect("data/loanvet.db")
     df.to_sql("credit_risk_cleaned", conn, if_exists='replace', index=False)
@@ -65,5 +70,7 @@ if __name__ == "__main__":
     df = drop_duplicates(df)
     df = create_missing_flags(df)
     df = impute_missing_values(df)
+    save_imputed_data(df)
+    
     df = cap_outliers(df, custom_caps)
     save_cleaned_data(df)
