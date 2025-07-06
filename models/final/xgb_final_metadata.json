@@ -1,0 +1,28 @@
+{
+  "model_type": "XGBoost",
+  "threshold": 0.2268,
+  "roc_auc": 0.8643,
+  "pr_auc": 0.4038,
+  "f1": 0.4589,
+  "features": [
+    "age",
+    "NumberOfOpenCreditLinesAndLoans",
+    "NumberRealEstateLoansOrLines",
+    "NumberOfDependents",
+    "MonthlyIncome_missing_flag",
+    "NumberOfDependents_missing_flag",
+    "RevolvingUtilizationOfUnsecuredLines_log",
+    "MonthlyIncome_log",
+    "DebtRatio_log",
+    "TotalDelinquencies_log",
+    "HighUtilizationFlag",
+    "IncomePerCreditLine",
+    "AgeGroup_MidAge",
+    "AgeGroup_Senior",
+    "DependentsGroup_Small",
+    "DependentsGroup_Large",
+    "Util_x_Late",
+    "IncomePerDependent",
+    "CreditLines_x_Delinquencies"
+  ]
+}
