@@ -7,7 +7,7 @@ LoanVet is a machine learning system for credit risk classification built with P
 - `data/` - Raw and processed datasets
 - `notebooks/` - Jupyter notebooks for exploratory data analysis and modelling
 - `src/` - Source code for data import, cleaning, and feature engineering
-- `models/` - Saved pipelines, evaluation metrics, and feature importance artifacts
+- `models/` - Saved pipelines, evaluation metrics, and feature importance artefacts
 - `reports/` - Visualisations and reports
 - `features.md` - Documentation of engineered features and transformations
 
@@ -75,7 +75,15 @@ Navigate to the `notebooks/` folder and open the notebooks.
 
 Trained models and outputs are saved in the `models/` directory.
 
-The artifacts support downstream reuse in dashboards (e.g. Streamlit) and inference scripts.
+The artefacts support downstream reuse in dashboards (e.g. Streamlit) and inference scripts.
+
+## Reports
+
+Final evaluation reports are saved as HTML files under the `reports/` directory for easy sharing and review.  
+For example:  
+`reports/final_evaluation_report.html`
+
+Open these files in a web browser to view comprehensive model performance summaries, ROC and Precision-Recall curves, threshold tuning, and error analysis visualisations.
 
 ## Additional Notes
 
