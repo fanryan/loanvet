@@ -2,6 +2,8 @@
 
 LoanVet is a comprehensive end-to-end machine learning system developed to predict credit risk based on financial and behavioural data. It utilises advanced feature engineering alongside powerful classification algorithms—such as Random Forest, XGBoost, and LightGBM—to deliver accurate and robust predictions. The system features a FastAPI backend that serves predictions through a RESTful API, enabling seamless integration with dashboards, web applications, or other frontend interfaces.
 
+Try the live app here: https://fan-loanvet.streamlit.app
+
 ## Project Structure
 
 - `data/` - Raw and processed datasets
