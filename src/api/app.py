@@ -2,6 +2,7 @@ import json
 import logging
 import joblib
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import RootModel
 from typing import Dict
 from xgboost import XGBClassifier
@@ -37,6 +38,19 @@ class PredictionRequest(RootModel[Dict[str, float]]):
     pass
 
 app = FastAPI(title="LoanVet Credit Risk Model API")
+
+# Add CORS middleware to allow frontend access
+origins = [
+    "https://fan-loanvet.streamlit.app",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/predict")
 async def predict_endpoint(input_data: PredictionRequest):
