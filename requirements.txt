@@ -10,3 +10,9 @@ lightgbm==4.6.0
 notebook
 ipykernel
 shap
+joblib
+pydantic
+fastapi
+uvicorn[standard]
+requests
+streamlit
