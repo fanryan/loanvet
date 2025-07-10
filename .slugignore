@@ -1,0 +1,6 @@
+# Ignore notebooks (usually not needed in deployment)
+notebooks/
+reports/
+data/dictionary/
+*.html
+*.ipynb

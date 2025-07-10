@@ -16,7 +16,7 @@ input_data = {
 
 if st.button("Predict"):
     try:
-        API_URL = "https://loanvet-api.up.railway.app/predict"
+        API_URL = "https://loanvet-b7d87d467e26.herokuapp.com/predict"
         response = requests.post(API_URL, json=input_data)
         response.raise_for_status()
         result = response.json()
