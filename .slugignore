@@ -4,7 +4,3 @@ reports/
 data/dictionary/
 *.html
 *.ipynb
-
-models/*
-!models/final/
-!models/final/xgb_final_model.joblib
