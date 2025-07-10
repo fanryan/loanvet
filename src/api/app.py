@@ -17,6 +17,9 @@ logging.basicConfig(level=logging.INFO)
 MODEL_PATH = "models/final/xgb_final_model.joblib"
 METADATA_PATH = "models/final/xgb_final_metadata.json"
 
+# WARNING: Consider saving/loading XGBoost model using Booster.save_model / load_model for compatibility.
+# Current loading via joblib may raise warnings if versions differ.
+
 # Load model
 try:
     model: XGBClassifier = joblib.load(MODEL_PATH)
@@ -54,6 +57,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/")
+async def root():
+    return {"message": "LoanVet API is running."}
 
 @app.post("/predict")
 async def predict_endpoint(raw_input: RawInputRequest):
