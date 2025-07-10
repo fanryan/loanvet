@@ -1,0 +1,11 @@
+# Ignore notebooks (usually not needed in deployment)
+notebooks/
+reports/
+data/dictionary/
+*.html
+*.ipynb
+
+# Ignore model files if large or you load them differently
+models/
+*.joblib
+*.pkl
