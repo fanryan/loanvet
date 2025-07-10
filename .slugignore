@@ -5,6 +5,6 @@ data/dictionary/
 *.html
 *.ipynb
 
-# Ignore model files if large or you load them differently
 models/*
+!models/final/
 !models/final/xgb_final_model.joblib
