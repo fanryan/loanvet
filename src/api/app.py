@@ -6,8 +6,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import RootModel
 from typing import Dict
 from xgboost import XGBClassifier
+import numpy as np
 
-from src.api.utils import predict_single, preprocess  # Assuming preprocess is in utils
+from src.api.utils import predict_single, preprocess
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -81,6 +82,10 @@ async def predict_endpoint(raw_input: RawInputRequest):
     # Predict using the processed input features
     try:
         result = predict_single(processed_data, model, feature_list, threshold)
+
+        # Convert numpy float (like numpy.float32) to native float for JSON serialization
+        if isinstance(result.get("probability"), (np.floating, np.float32, np.float64)):
+            result["probability"] = float(result["probability"])
     except Exception as e:
         logging.error(f"Prediction error: {e}")
         raise HTTPException(status_code=500, detail="Prediction failed.")

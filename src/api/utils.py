@@ -27,6 +27,8 @@ def predict_batch(df: pd.DataFrame, model, feature_list, threshold) -> pd.DataFr
         logging.error(f"❌ Batch prediction error: {e}")
         raise
 
+import numpy as np
+
 def preprocess(raw_data: dict) -> dict:
     """
     Transform raw input features into the engineered features
@@ -68,5 +70,11 @@ def preprocess(raw_data: dict) -> dict:
     processed["Util_x_Late"] = raw_data.get("revolving_utilization_of_unsecured_lines", 0) * raw_data.get("total_delinquencies", 0)
     processed["IncomePerDependent"] = (monthly_income / dep) if dep > 0 else 0
     processed["CreditLines_x_Delinquencies"] = open_lines * raw_data.get("total_delinquencies", 0)
+
+    # Add raw numeric features required by the model
+    processed["age"] = age
+    processed["NumberOfOpenCreditLinesAndLoans"] = open_lines
+    processed["NumberRealEstateLoansOrLines"] = raw_data.get("number_real_estate_loans_or_lines", 0)
+    processed["NumberOfDependents"] = dep
 
     return processed
