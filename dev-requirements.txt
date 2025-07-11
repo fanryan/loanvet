@@ -1,22 +1,36 @@
-# Jupyter + EDA
+# =====================
+# CORE DATA HANDLING
+# =====================
+pandas==2.3.0
+numpy==2.0.2
+sqlalchemy==2.0.41  # For SQLite or future DB backends
+
+# =====================
+# JUPYTER + EDA
+# =====================
 notebook
 matplotlib
 seaborn
 
-# Modeling
-xgboost==2.0.3
+# =====================
+# MODELING + INTERPRETABILITY
+# =====================
 scikit-learn
+xgboost==2.0.3
 lightgbm
 shap
+joblib
 
-# Backend
+# =====================
+# BACKEND (FastAPI API)
+# =====================
 fastapi==0.116.0
 uvicorn==0.35.0
 pydantic==2.11.7
-joblib
 starlette==0.46.2
 requests
 
-# Data
-pandas==2.3.0
-numpy==2.0.2
+# =====================
+# UTILS
+# =====================
+python-dotenv
