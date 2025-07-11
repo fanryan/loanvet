@@ -47,7 +47,7 @@ This project uses the [Give Me Some Credit dataset](https://www.kaggle.com/compe
 
 3. Install dependencies:
    ```bash
-   pip install -r requirements.txt
+   pip install -r dev-requirements.txt
    ```
 
 4. Import and clean the raw dataset, then perform feature engineering:
