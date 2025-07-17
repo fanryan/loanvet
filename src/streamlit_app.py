@@ -16,7 +16,7 @@ input_data = {
 
 if st.button("Predict"):
     try:
-        API_URL = "https://loanvet-fastapi.onrender.com/predict"
+        API_URL = "https://loanvet.onrender.com/predict"
         response = requests.post(API_URL, json=input_data)
         response.raise_for_status()
         result = response.json()
